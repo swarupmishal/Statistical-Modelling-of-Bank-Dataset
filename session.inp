@@ -1,0 +1,50 @@
+# Log started 2017-05-26 11:12
+# Record of session commands.  Please note that this will
+# likely require editing if it is to be run as a script.
+open \
+  "D:\NEU\Summer 2017\Data Science A-Z\Modelling Section\4. Geodemographic Segmentation\Churn-Modelling.csv"
+dummify Gender
+dummify Geography
+rename 17 France
+rename 18 Spain
+rename 19 Germany
+rename 15 Female
+rename 16 Male
+# model 1
+logit Exited 0 CreditScore Age Tenure Balance NumOfProducts HasCrCard \
+  IsActiveMember EstimatedSalary Female Spain Germany --p-values \
+  --verbose
+# model 2
+logit Exited 0 CreditScore Age Tenure Balance NumOfProducts HasCrCard \
+  IsActiveMember EstimatedSalary Female Germany --p-values --verbose
+# model 3
+logit Exited 0 CreditScore Age Tenure Balance NumOfProducts \
+  IsActiveMember EstimatedSalary Female Germany --p-values --verbose
+# model 4
+logit Exited 0 CreditScore Age Tenure Balance NumOfProducts \
+  IsActiveMember Female Germany --p-values --verbose
+# model 5
+logit Exited 0 CreditScore Age Balance NumOfProducts IsActiveMember \
+  Female Germany --p-values --verbose
+Log_Balance = log10(Balance + 1)
+# model 6
+logit Exited 0 CreditScore Age Balance NumOfProducts IsActiveMember \
+  Female Germany Log_Balance --p-values --verbose
+WealthAccumulation = Balance/Age
+# model 7
+logit Exited 0 CreditScore Age Balance NumOfProducts IsActiveMember \
+  Female Germany Log_Balance WealthAccumulation --p-values --verbose
+# model 8
+logit Exited 0 CreditScore Age NumOfProducts IsActiveMember Female \
+  Germany Log_Balance --p-values --verbose
+# model 9
+logit Exited 0 CreditScore Age NumOfProducts IsActiveMember Female \
+  Germany Log_Balance WealthAccumulation Tenure --p-values --verbose
+Log_WA = log10(WealthAccumulation)
+setinfo Log_WA --description="log10(Balance/Age + 1)"
+# model 10
+logit Exited 0 CreditScore Age NumOfProducts IsActiveMember Female \
+  Germany Tenure Log_Balance Log_WA --p-values --verbose
+# model 11
+logit Exited 0 CreditScore Age NumOfProducts IsActiveMember Female \
+  Germany Tenure Log_Balance --p-values --verbose
