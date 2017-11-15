@@ -28,7 +28,7 @@ The model summary can be found here: https://github.com/swarupmishal/Statistical
 ### Cap Curve of Test dataset
 ![alt text](https://github.com/swarupmishal/Statistical-Modelling-for-Churn-investigation/blob/master/Output/Test%20data%20CAP%20curve.png)
 
-We got an accuracy reduction of only 3% on test data with respect to train data. 
+We got an accuracy of 96% on test data with respect to train data. 
 
 The final report can be found here: https://github.com/swarupmishal/Statistical-Modelling-for-Churn-investigation/blob/master/Final%20Report/Report.csv
 
