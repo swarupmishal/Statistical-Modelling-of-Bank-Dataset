@@ -1,4 +1,4 @@
-# Statistical Modelling for Churn investigation
+# Statistical Modelling of Bank Dataset using SQL, SSIS, Gretl
 ![alt text](https://github.com/swarupmishal/Statistical-Modelling-for-Churn-investigation/blob/master/Extras/AAEAAQAAAAAAAAdeAAAAJDRmOWNmYTdhLTRhNmUtNGZlYi05MjIwLTQ3YTRhODZmNTQ2YQ.jpg)
 
 
